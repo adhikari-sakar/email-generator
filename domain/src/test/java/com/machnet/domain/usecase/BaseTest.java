@@ -1,18 +1,5 @@
 package com.machnet.domain.usecase;
 
-import static com.machnet.domain.email.EmailProviderType.DEFAULT;
-import static com.machnet.domain.email.EmailProviderType.MALIGUN;
-import static com.machnet.domain.email.EmailProviderType.SENDGRID;
-import static com.machnet.domain.email.EmailProviderType.SPARK;
-import static com.machnet.domain.email.EmailStatus.*;
-import static com.machnet.domain.email.Priority.HIGH;
-import static com.machnet.domain.email.Priority.LOW;
-import static com.machnet.domain.email.Priority.MEDIUM;
-import static com.machnet.domain.email.Priority.TOP;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
-
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.email.EmailModel;
@@ -21,10 +8,18 @@ import com.machnet.domain.template.DefaultTemplate;
 import com.machnet.domain.template.MailgunTemplate;
 import com.machnet.domain.template.SendGridTemplate;
 import com.machnet.domain.template.SparkTemplate;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
+
+import java.util.List;
+
+import static com.machnet.domain.email.EmailProviderType.*;
+import static com.machnet.domain.email.EmailStatus.SENT;
+import static com.machnet.domain.email.Priority.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
 
 public class BaseTest {
 
@@ -72,10 +67,10 @@ public class BaseTest {
 
     public List<EmailProvider> mockProviders() {
         return List.of(
-            new EmailProviderMock(emailService, TOP, SPARK, new SparkTemplate(), emailService.isConnected()),
-            new EmailProviderMock(emailService, HIGH, SENDGRID, sendGridTemplate(), emailService.isConnected()),
-            new EmailProviderMock(emailService, MEDIUM, MALIGUN, new MailgunTemplate(), emailService.isConnected()),
-            new EmailProviderMock(emailService, LOW, DEFAULT, new DefaultTemplate(), emailService.isConnected())
+                new EmailProviderMock(emailService, TOP, SPARK, new SparkTemplate(), emailService.isConnected()),
+                new EmailProviderMock(emailService, HIGH, SENDGRID, sendGridTemplate(), emailService.isConnected()),
+                new EmailProviderMock(emailService, MEDIUM, MALIGUN, new MailgunTemplate(), emailService.isConnected()),
+                new EmailProviderMock(emailService, LOW, DEFAULT, new DefaultTemplate(), emailService.isConnected())
         );
     }
 }

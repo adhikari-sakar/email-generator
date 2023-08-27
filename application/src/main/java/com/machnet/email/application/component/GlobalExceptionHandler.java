@@ -1,11 +1,6 @@
 package com.machnet.email.application.component;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-
 import com.machnet.email.application.model.ErrorResponse;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +9,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @ControllerAdvice
 @Log4j2
@@ -43,6 +44,6 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handle(Exception e) {
         log.error(e.getMessage());
         return ResponseEntity.internalServerError()
-            .body(new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error"));
+                .body(new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error"));
     }
 }

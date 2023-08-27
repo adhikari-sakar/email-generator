@@ -1,11 +1,10 @@
 package com.machnet.domain.email;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.machnet.domain.exception.DataNotFoundException;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EmailSenderTest {
 
@@ -17,11 +16,11 @@ class EmailSenderTest {
 
     @Test
     void givenEmptyEmailAddress_exception() {
-        assertThrows(DataNotFoundException.class,() -> new EmailSender(""));
+        assertThrows(DataNotFoundException.class, () -> new EmailSender(""));
     }
 
     @Test
-    void equalsAndHashCode(){
+    void equalsAndHashCode() {
         var sender1 = new EmailSender("test@gmail.com");
         var sender2 = new EmailSender("test@gmail.com");
         assertThat(sender1).isEqualTo(sender2);

@@ -1,13 +1,13 @@
 package com.machnet.domain.provider;
 
-import static com.machnet.domain.email.EmailProviderType.MALIGUN;
-import static com.machnet.domain.email.Priority.MEDIUM;
-
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.template.MailgunTemplate;
+
+import static com.machnet.domain.email.EmailProviderType.MALIGUN;
+import static com.machnet.domain.email.Priority.MEDIUM;
 
 public class MailgunEmailProvider extends AbstractEmailProvider implements EmailProvider {
 

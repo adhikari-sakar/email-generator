@@ -27,11 +27,11 @@ public class EmailModel {
     @Override
     public String toString() {
         return "EmailModel{" +
-            "subject=" + subject +
-            ", sender=" + sender +
-            ", body=" + body +
-            ", receiver=" + receiver +
-            ", status=" + status.name() +
-            '}';
+                "subject=" + subject +
+                ", sender=" + sender +
+                ", body=" + body +
+                ", receiver=" + receiver +
+                ", status=" + status.name() +
+                '}';
     }
 }

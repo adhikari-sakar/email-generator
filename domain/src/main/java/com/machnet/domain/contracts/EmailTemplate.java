@@ -1,11 +1,6 @@
 package com.machnet.domain.contracts;
 
-import com.machnet.domain.email.DefaultEmailReceiver;
-import com.machnet.domain.email.DefaultEmailSender;
-import com.machnet.domain.email.EmailBody;
-import com.machnet.domain.email.EmailReceiver;
-import com.machnet.domain.email.EmailSender;
-import com.machnet.domain.email.EmailSubject;
+import com.machnet.domain.email.*;
 
 public interface EmailTemplate {
 

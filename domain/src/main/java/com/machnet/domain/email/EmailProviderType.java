@@ -1,8 +1,9 @@
 package com.machnet.domain.email;
 
 import com.machnet.domain.exception.CommandNotFoundException;
-import java.util.stream.Stream;
 import lombok.Getter;
+
+import java.util.stream.Stream;
 
 @Getter
 public enum EmailProviderType {
@@ -19,8 +20,8 @@ public enum EmailProviderType {
 
     public static EmailProviderType getType(String providerType) {
         return Stream.of(values())
-            .filter(type -> type.getProviderType().equalsIgnoreCase(providerType))
-            .findFirst()
-            .orElseThrow(() -> new CommandNotFoundException("Email Provider not found!!"));
+                .filter(type -> type.getProviderType().equalsIgnoreCase(providerType))
+                .findFirst()
+                .orElseThrow(() -> new CommandNotFoundException("Email Provider not found!!"));
     }
 }

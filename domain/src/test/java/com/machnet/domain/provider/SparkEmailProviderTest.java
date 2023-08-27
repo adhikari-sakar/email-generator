@@ -1,13 +1,13 @@
 package com.machnet.domain.provider;
 
+import com.machnet.domain.template.SparkTemplate;
+import com.machnet.domain.usecase.BaseTest;
+import org.junit.jupiter.api.Test;
+
 import static com.machnet.domain.email.EmailProviderType.SPARK;
 import static com.machnet.domain.email.EmailStatus.SENT;
 import static com.machnet.domain.email.Priority.TOP;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import com.machnet.domain.template.SparkTemplate;
-import com.machnet.domain.usecase.BaseTest;
-import org.junit.jupiter.api.Test;
 
 class SparkEmailProviderTest extends BaseTest {
 

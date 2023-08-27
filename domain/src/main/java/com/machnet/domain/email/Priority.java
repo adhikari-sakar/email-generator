@@ -19,6 +19,6 @@ public enum Priority {
     // swap priority from failed provider to new provider if higher, or else unchanged.
     public Priority resolve(EmailProvider fallbackProvider) {
         return this.getValue().compareTo(fallbackProvider.getPriority().getValue()) > 0 ? this
-            : fallbackProvider.getPriority();
+                : fallbackProvider.getPriority();
     }
 }

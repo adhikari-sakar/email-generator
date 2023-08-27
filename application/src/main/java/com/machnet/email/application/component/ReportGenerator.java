@@ -5,10 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.machnet.email.application.repository.ReportEntity;
 import com.machnet.email.application.repository.ReportJpaRepository;
 import com.machnet.shared.utils.AsyncReportGenerator;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Log4j2

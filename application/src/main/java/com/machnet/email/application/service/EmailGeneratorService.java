@@ -5,9 +5,10 @@ import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.usecase.EmailGenerateUseCase;
 import com.machnet.email.application.mapper.EmailResponseMapper;
 import com.machnet.email.application.model.EmailResponse;
-import java.util.Map;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 @Service
 @AllArgsConstructor

@@ -2,16 +2,11 @@ package com.machnet.email.application.component;
 
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.email.application.exception.SendGridException;
-import com.sendgrid.Content;
-import com.sendgrid.Email;
-import com.sendgrid.Mail;
-import com.sendgrid.Method;
-import com.sendgrid.Request;
-import com.sendgrid.Response;
-import com.sendgrid.SendGrid;
-import java.io.IOException;
+import com.sendgrid.*;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Component
 @Log4j2

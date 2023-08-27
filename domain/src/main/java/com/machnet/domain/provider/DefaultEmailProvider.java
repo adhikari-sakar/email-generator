@@ -1,13 +1,13 @@
 package com.machnet.domain.provider;
 
-import static com.machnet.domain.email.EmailProviderType.DEFAULT;
-import static com.machnet.domain.email.Priority.LOW;
-
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.template.DefaultTemplate;
+
+import static com.machnet.domain.email.EmailProviderType.DEFAULT;
+import static com.machnet.domain.email.Priority.LOW;
 
 public class DefaultEmailProvider extends AbstractEmailProvider implements EmailProvider {
 

@@ -2,6 +2,7 @@ package com.machnet.domain.usecase;
 
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.email.EmailModel;
+
 import java.util.Collection;
 
 public class EmailGenerateUseCase {

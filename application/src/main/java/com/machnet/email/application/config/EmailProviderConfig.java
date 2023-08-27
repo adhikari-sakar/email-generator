@@ -1,7 +1,5 @@
 package com.machnet.email.application.config;
 
-import static java.util.stream.Collectors.toMap;
-
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.provider.DefaultEmailProvider;
@@ -11,11 +9,14 @@ import com.machnet.domain.usecase.EmailGenerateUseCase;
 import com.machnet.email.application.service.DefaultEmailService;
 import com.machnet.email.application.service.MailgunEmailService;
 import com.machnet.email.application.service.SparkEmailService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+
+import static java.util.stream.Collectors.toMap;
 
 @Configuration
 public class EmailProviderConfig {

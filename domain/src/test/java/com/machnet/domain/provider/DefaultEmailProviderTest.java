@@ -1,14 +1,13 @@
 package com.machnet.domain.provider;
 
+import com.machnet.domain.template.DefaultTemplate;
+import com.machnet.domain.usecase.BaseTest;
+import org.junit.jupiter.api.Test;
+
 import static com.machnet.domain.email.EmailProviderType.DEFAULT;
 import static com.machnet.domain.email.EmailStatus.SENT;
 import static com.machnet.domain.email.Priority.LOW;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import com.machnet.domain.email.EmailStatus;
-import com.machnet.domain.template.DefaultTemplate;
-import com.machnet.domain.usecase.BaseTest;
-import org.junit.jupiter.api.Test;
 
 class DefaultEmailProviderTest extends BaseTest {
 

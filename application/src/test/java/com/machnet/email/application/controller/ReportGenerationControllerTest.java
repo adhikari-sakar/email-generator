@@ -1,7 +1,5 @@
 package com.machnet.email.application.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import com.machnet.email.application.component.ReportGenerator;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -11,6 +9,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ReportGenerationController.class)
 class ReportGenerationControllerTest {
@@ -24,19 +24,19 @@ class ReportGenerationControllerTest {
     @SneakyThrows
     void generate_success() {
         RequestBuilder builder = MockMvcRequestBuilders
-            .post("/api/v1/report/generate");
+                .post("/api/v1/report/generate");
 
         mockMvc.perform(builder)
-            .andExpect(status().isAccepted());
+                .andExpect(status().isAccepted());
     }
 
     @Test
     @SneakyThrows
     void generator_notFound() {
         RequestBuilder builder = MockMvcRequestBuilders
-            .post("/api/v1/report");
+                .post("/api/v1/report");
 
         mockMvc.perform(builder)
-            .andExpect(status().isNotFound());
+                .andExpect(status().isNotFound());
     }
 }

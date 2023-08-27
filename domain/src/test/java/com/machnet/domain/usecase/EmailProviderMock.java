@@ -13,7 +13,7 @@ public class EmailProviderMock extends AbstractEmailProvider {
     private final boolean isUp;
 
     public EmailProviderMock(EmailService emailService, Priority priority, EmailProviderType type,
-        EmailTemplate template, boolean isUp) {
+                             EmailTemplate template, boolean isUp) {
         super(emailService, priority);
         this.type = type;
         this.template = template;

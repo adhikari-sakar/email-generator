@@ -1,15 +1,16 @@
 package com.machnet.email.application.component;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailBody;
 import com.machnet.domain.email.EmailReceiver;
 import com.machnet.domain.email.EmailSender;
 import com.machnet.domain.email.EmailSubject;
-import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 class SendGridApiITest {

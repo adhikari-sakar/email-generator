@@ -1,5 +1,11 @@
 package com.machnet.domain.contracts;
 
+import com.machnet.domain.exception.CommandNotFoundException;
+import com.machnet.domain.template.DefaultTemplate;
+import com.machnet.domain.usecase.BaseTest;
+import com.machnet.domain.usecase.EmailProviderMock;
+import org.junit.jupiter.api.Test;
+
 import static com.machnet.domain.email.EmailProviderType.DEFAULT;
 import static com.machnet.domain.email.EmailProviderType.SPARK;
 import static com.machnet.domain.email.Priority.MEDIUM;
@@ -8,16 +14,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-import com.machnet.domain.exception.CommandNotFoundException;
-import com.machnet.domain.template.DefaultTemplate;
-import com.machnet.domain.usecase.BaseTest;
-import com.machnet.domain.usecase.EmailProviderMock;
-import org.junit.jupiter.api.Test;
-
 class EmailProviderTest extends BaseTest {
 
     private final EmailProvider mockProvider = new EmailProviderMock(emailService, MEDIUM, DEFAULT,
-        new DefaultTemplate(), true);
+            new DefaultTemplate(), true);
 
     @Test
     void fallback_givenAvailableProviders_thenSortedAndReturnByPriority() {

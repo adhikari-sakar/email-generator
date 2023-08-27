@@ -1,20 +1,20 @@
 package com.machnet.email.application.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.when;
-import static org.mockito.MockitoAnnotations.openMocks;
-
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.exception.EmailServiceException;
 import com.machnet.email.application.component.SendGridApi;
 import com.sendgrid.Response;
-import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.openMocks;
 
 class SendGridEmailServiceTest {
 
@@ -34,6 +34,7 @@ class SendGridEmailServiceTest {
         var email = service.send(new TestEmailTemplate());
         assertThat(email).isNotNull();
     }
+
 
     @Test
     void send_failed() throws IOException {

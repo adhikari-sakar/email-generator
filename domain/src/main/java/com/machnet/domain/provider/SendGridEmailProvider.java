@@ -1,13 +1,13 @@
 package com.machnet.domain.provider;
 
-import static com.machnet.domain.email.EmailProviderType.SENDGRID;
-import static com.machnet.domain.email.Priority.HIGH;
-
 import com.machnet.domain.contracts.EmailProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.template.SendGridTemplate;
+
+import static com.machnet.domain.email.EmailProviderType.SENDGRID;
+import static com.machnet.domain.email.Priority.HIGH;
 
 public class SendGridEmailProvider extends AbstractEmailProvider implements EmailProvider {
 
@@ -16,7 +16,7 @@ public class SendGridEmailProvider extends AbstractEmailProvider implements Emai
     private final String receiverEmail;
 
     public SendGridEmailProvider(EmailService emailService, String senderEmail, String emailBody,
-        String receiverEmail) {
+                                 String receiverEmail) {
         super(emailService, HIGH);
         this.senderEmail = senderEmail;
         this.emailBody = emailBody;

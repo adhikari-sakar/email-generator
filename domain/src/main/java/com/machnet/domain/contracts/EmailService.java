@@ -1,10 +1,9 @@
 package com.machnet.domain.contracts;
 
-import static com.machnet.domain.email.EmailStatus.*;
-
 import com.machnet.domain.email.EmailModel;
-import com.machnet.domain.email.EmailStatus;
 import lombok.NonNull;
+
+import static com.machnet.domain.email.EmailStatus.SENT;
 
 public interface EmailService {
 
