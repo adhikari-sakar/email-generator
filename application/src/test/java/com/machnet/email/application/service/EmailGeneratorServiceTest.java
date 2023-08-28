@@ -52,16 +52,6 @@ class EmailGeneratorServiceTest {
         assertThat(response.getReceiver()).isEqualTo("test@reciever.com");
     }
 
-    @Test
-    void generateEmail_whenEmailNotGenerated_thenResponseIsMapped() {
-        when(useCase.generateEmail(any(EmailProvider.class), anyCollection())).thenReturn(email());
-        var response = service.generateEmail(SPARK);
-        assertThat(response).isNotNull();
-        assertThat(response.getSender()).isEqualTo("test@sender.com");
-        assertThat(response.getBody()).isEqualTo("test_body");
-        assertThat(response.getReceiver()).isEqualTo("test@reciever.com");
-    }
-
     @AfterEach
     void tearDown() {
         reset(useCase);
