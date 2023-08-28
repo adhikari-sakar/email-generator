@@ -25,7 +25,7 @@ class EmailGenerationControllerTest {
 
     @Test
     @SneakyThrows
-    void register_success() {
+    void generate_success() {
         RequestBuilder builder = MockMvcRequestBuilders
                 .get("/api/v1/email/generate/DEFAULT");
 
@@ -35,7 +35,7 @@ class EmailGenerationControllerTest {
 
     @Test
     @SneakyThrows
-    void register_notFound() {
+    void generate_notFound() {
         RequestBuilder builder = MockMvcRequestBuilders
                 .get("/api/v1/email/generate");
 
@@ -45,7 +45,7 @@ class EmailGenerationControllerTest {
 
     @Test
     @SneakyThrows
-    void register_badRequest() {
+    void generate_badRequest() {
         RequestBuilder builder = MockMvcRequestBuilders
                 .get("/api/v1/email/generate/xyz");
 
