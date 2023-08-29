@@ -1,6 +1,6 @@
 package com.machnet.email.application.config;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.provider.SendGridEmailProvider;
 import com.machnet.email.application.component.SendGridApi;
 import com.machnet.email.application.service.SendGridEmailService;
@@ -22,7 +22,7 @@ public class SendGridConfig {
     private String sendGridApiKey;
 
     @Bean
-    EmailProvider sendGridEmailProvider(SendGridApi sendGridApi) {
+    EmailServiceProvider sendGridEmailProvider(SendGridApi sendGridApi) {
         return new SendGridEmailProvider(new SendGridEmailService(sendGridApi), sender, body, receiver);
     }
 

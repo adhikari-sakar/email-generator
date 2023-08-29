@@ -2,7 +2,7 @@ package com.machnet.domain.contracts;
 
 import com.machnet.domain.exception.CommandNotFoundException;
 import com.machnet.domain.template.DefaultTemplate;
-import com.machnet.domain.usecase.BaseTest;
+import com.machnet.domain.usecase.BaseMockTest;
 import com.machnet.domain.usecase.EmailProviderMock;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +14,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-class EmailProviderTest extends BaseTest {
+class EmailServiceProviderTest extends BaseMockTest {
 
-    private final EmailProvider mockProvider = new EmailProviderMock(emailService, MEDIUM, DEFAULT,
+    private final EmailServiceProvider mockProvider = new EmailProviderMock(emailService, MEDIUM, DEFAULT,
             new DefaultTemplate(), true);
 
     @Test

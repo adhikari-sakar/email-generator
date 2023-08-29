@@ -1,6 +1,6 @@
 package com.machnet.domain.provider;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailModel;
@@ -8,13 +8,13 @@ import com.machnet.domain.email.Priority;
 
 import java.util.function.Function;
 
-public abstract class AbstractEmailProvider implements EmailProvider {
+public abstract class AbstractEmailServiceProvider implements EmailServiceProvider {
 
     private final EmailService emailService;
     private boolean isSkipped = false;
     private Priority priority;
 
-    protected AbstractEmailProvider(EmailService emailService, Priority priority) {
+    protected AbstractEmailServiceProvider(EmailService emailService, Priority priority) {
         this.emailService = emailService;
         this.priority = priority;
     }
@@ -33,13 +33,13 @@ public abstract class AbstractEmailProvider implements EmailProvider {
     }
 
     @Override
-    public EmailProvider updatePriority(Priority priority) {
+    public EmailServiceProvider updatePriority(Priority priority) {
         this.priority = priority;
         return this;
     }
 
     @Override
-    public EmailProvider skip() {
+    public EmailServiceProvider skip() {
         this.isSkipped = true;
         return this;
     }
@@ -55,7 +55,7 @@ public abstract class AbstractEmailProvider implements EmailProvider {
     }
 
     @Override
-    public EmailProvider andThen(Function<EmailProvider, EmailProvider> providerFunction) {
+    public EmailServiceProvider andThen(Function<EmailServiceProvider, EmailServiceProvider> providerFunction) {
         return providerFunction.apply(this);
     }
 }

@@ -1,6 +1,6 @@
 package com.machnet.domain.usecase;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.email.Priority;
 import com.machnet.domain.exception.CommandNotFoundException;
@@ -14,7 +14,7 @@ import static com.machnet.domain.email.EmailStatus.SENT;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-class EmailGenerateUseCaseTest extends BaseTest {
+class EmailGenerateUseCaseTest extends BaseMockTest {
 
     private final EmailGenerateUseCase useCase = new EmailGenerateUseCase();
 
@@ -25,14 +25,14 @@ class EmailGenerateUseCaseTest extends BaseTest {
 
     @Test
     void generateEmail_givenProviderIsAvailable_thenSuccess() {
-        EmailProvider emailProvider = defaultEmailProvider(true);
+        EmailServiceProvider emailProvider = defaultEmailProvider(true);
         var email = useCase.generateEmail(emailProvider, List.of());
         assertEmail(email, "defaultsender@test.com", "Generic email Template", "defaultreceiver@test.com", SENT);
     }
 
     @Test
     void generateEmail_givenProviderIsUnavailable_thenFallbackIsSuccess() {
-        EmailProvider emailProvider = defaultEmailProvider(false);
+        EmailServiceProvider emailProvider = defaultEmailProvider(false);
         when(emailService.isConnected()).thenReturn(true);
         var email = useCase.generateEmail(emailProvider, mockProviders());
         assertEmail(email, "sparksender@test.com", "Spark email Template", "sparkreciever@test.com", SENT);

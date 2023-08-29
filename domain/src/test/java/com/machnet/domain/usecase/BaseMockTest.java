@@ -1,6 +1,6 @@
 package com.machnet.domain.usecase;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.email.EmailModel;
 import com.machnet.domain.email.EmailStatus;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.openMocks;
 
-public class BaseTest {
+public class BaseMockTest {
 
     @Mock
     protected static EmailService emailService;
@@ -65,7 +65,7 @@ public class BaseTest {
         when(emailService.send(ArgumentMatchers.any(DefaultTemplate.class))).thenReturn(defaultEmail());
     }
 
-    public List<EmailProvider> mockProviders() {
+    public List<EmailServiceProvider> mockProviders() {
         return List.of(
                 new EmailProviderMock(emailService, TOP, SPARK, new SparkTemplate(), emailService.isConnected()),
                 new EmailProviderMock(emailService, HIGH, SENDGRID, sendGridTemplate(), emailService.isConnected()),

@@ -1,6 +1,6 @@
 package com.machnet.email.application.service;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.email.EmailModel;
 import com.machnet.domain.provider.SparkEmailProvider;
@@ -44,7 +44,7 @@ class EmailGeneratorServiceTest {
 
     @Test
     void generateEmail_whenEmailIsGenerated_thenResponseIsMapped() {
-        when(useCase.generateEmail(any(EmailProvider.class), anyCollection())).thenReturn(email());
+        when(useCase.generateEmail(any(EmailServiceProvider.class), anyCollection())).thenReturn(email());
         var response = service.generateEmail(SPARK);
         assertThat(response).isNotNull();
         assertThat(response.getSender()).isEqualTo("test@sender.com");

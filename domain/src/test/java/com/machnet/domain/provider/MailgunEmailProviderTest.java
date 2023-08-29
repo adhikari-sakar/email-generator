@@ -1,7 +1,7 @@
 package com.machnet.domain.provider;
 
 import com.machnet.domain.template.MailgunTemplate;
-import com.machnet.domain.usecase.BaseTest;
+import com.machnet.domain.usecase.BaseMockTest;
 import org.junit.jupiter.api.Test;
 
 import static com.machnet.domain.email.EmailProviderType.MALIGUN;
@@ -9,7 +9,7 @@ import static com.machnet.domain.email.EmailStatus.SENT;
 import static com.machnet.domain.email.Priority.MEDIUM;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MailgunEmailProviderTest extends BaseTest {
+class MailgunEmailProviderTest extends BaseMockTest {
 
     private final MailgunEmailProvider provider = new MailgunEmailProvider(emailService);
 

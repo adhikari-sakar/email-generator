@@ -1,7 +1,7 @@
 package com.machnet.domain.provider;
 
 import com.machnet.domain.template.SendGridTemplate;
-import com.machnet.domain.usecase.BaseTest;
+import com.machnet.domain.usecase.BaseMockTest;
 import org.junit.jupiter.api.Test;
 
 import static com.machnet.domain.email.EmailProviderType.SENDGRID;
@@ -9,7 +9,7 @@ import static com.machnet.domain.email.EmailStatus.SENT;
 import static com.machnet.domain.email.Priority.HIGH;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SendGridEmailProviderTest extends BaseTest {
+class SendGridEmailProviderTest extends BaseMockTest {
 
     private final SendGridEmailProvider provider = new SendGridEmailProvider(emailService, "sendgridsender@test.com",
             "SendGrid email Template", "sendgridreciever@test.com");

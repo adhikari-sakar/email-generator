@@ -4,9 +4,9 @@ import com.machnet.domain.contracts.EmailService;
 import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.email.Priority;
-import com.machnet.domain.provider.AbstractEmailProvider;
+import com.machnet.domain.provider.AbstractEmailServiceProvider;
 
-public class EmailProviderMock extends AbstractEmailProvider {
+public class EmailProviderMock extends AbstractEmailServiceProvider {
 
     private final EmailProviderType type;
     private final EmailTemplate template;

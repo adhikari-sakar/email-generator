@@ -1,7 +1,7 @@
 package com.machnet.domain.provider;
 
 import com.machnet.domain.template.SparkTemplate;
-import com.machnet.domain.usecase.BaseTest;
+import com.machnet.domain.usecase.BaseMockTest;
 import org.junit.jupiter.api.Test;
 
 import static com.machnet.domain.email.EmailProviderType.SPARK;
@@ -9,7 +9,7 @@ import static com.machnet.domain.email.EmailStatus.SENT;
 import static com.machnet.domain.email.Priority.TOP;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class SparkEmailProviderTest extends BaseTest {
+class SparkEmailProviderTest extends BaseMockTest {
 
     private final SparkEmailProvider provider = new SparkEmailProvider(emailService);
 

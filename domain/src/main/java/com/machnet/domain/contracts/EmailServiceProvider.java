@@ -4,7 +4,6 @@ import com.machnet.domain.email.EmailModel;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.email.Priority;
 import com.machnet.domain.exception.CommandNotFoundException;
-import com.machnet.domain.provider.AbstractEmailProvider;
 
 import java.util.Collection;
 import java.util.function.Function;
@@ -12,7 +11,7 @@ import java.util.function.Function;
 import static java.util.Comparator.comparing;
 import static java.util.function.Predicate.not;
 
-public interface EmailProvider extends Command<EmailModel> {
+public interface EmailServiceProvider extends Command<EmailModel> {
 
     EmailProviderType getType();
 
@@ -20,9 +19,9 @@ public interface EmailProvider extends Command<EmailModel> {
 
     Priority getPriority();
 
-    EmailProvider updatePriority(Priority priority);
+    EmailServiceProvider updatePriority(Priority priority);
 
-    EmailProvider skip();
+    EmailServiceProvider skip();
 
     boolean isSkipped();
 
@@ -33,16 +32,16 @@ public interface EmailProvider extends Command<EmailModel> {
         return ConnectionProvider.isConnected(getService());
     }
 
-    default EmailProvider skipAndFallback(Collection<EmailProvider> providers) {
+    default EmailServiceProvider skipAndFallback(Collection<EmailServiceProvider> providers) {
         return this.skip().andThen(provider -> fallback(providers));
     }
 
-    EmailProvider andThen(Function<EmailProvider, EmailProvider> providerFunction);
+    EmailServiceProvider andThen(Function<EmailServiceProvider, EmailServiceProvider> providerFunction);
 
-    private EmailProvider fallback(Collection<EmailProvider> providers) {
+    private EmailServiceProvider fallback(Collection<EmailServiceProvider> providers) {
         return providers.stream()
-                .filter(not(EmailProvider::isSkipped))
-                .filter(EmailProvider::isUp)
+                .filter(not(EmailServiceProvider::isSkipped))
+                .filter(EmailServiceProvider::isUp)
                 .max(comparing(provider -> provider.getPriority().getValue()))
                 .map(newProvider -> newProvider.updatePriority(this.getPriority().resolve(newProvider.getPriority())))
                 .orElseThrow(() -> new CommandNotFoundException("Email Provider not found!!"));

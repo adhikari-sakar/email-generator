@@ -1,6 +1,6 @@
 package com.machnet.email.application.config;
 
-import com.machnet.domain.contracts.EmailProvider;
+import com.machnet.domain.contracts.EmailServiceProvider;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.provider.DefaultEmailProvider;
 import com.machnet.domain.provider.MailgunEmailProvider;
@@ -28,24 +28,24 @@ public class EmailProviderConfig {
     }
 
     @Bean
-    EmailProvider mailGunEmailProvider() {
+    EmailServiceProvider mailGunEmailProvider() {
         return new MailgunEmailProvider(new MailgunEmailService());
     }
 
     @Bean
-    EmailProvider sparkEmailProvider() {
+    EmailServiceProvider sparkEmailProvider() {
         return new SparkEmailProvider(new SparkEmailService());
     }
 
     @Bean
-    EmailProvider defaultEmailProvider() {
+    EmailServiceProvider defaultEmailProvider() {
         return new DefaultEmailProvider(new DefaultEmailService());
     }
 
 
     //fill map with provider types and concrete providers
     @Bean
-    Map<EmailProviderType, EmailProvider> emailProviders(List<EmailProvider> emailProviders) {
-        return emailProviders.stream().collect(toMap(EmailProvider::getType, Function.identity()));
+    Map<EmailProviderType, EmailServiceProvider> emailProviders(List<EmailServiceProvider> emailProviders) {
+        return emailProviders.stream().collect(toMap(EmailServiceProvider::getType, Function.identity()));
     }
 }
