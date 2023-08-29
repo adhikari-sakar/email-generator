@@ -22,7 +22,7 @@ class EmailProviderTest extends BaseTest {
     @Test
     void fallback_givenAvailableProviders_thenSortedAndReturnByPriority() {
         when(emailService.isConnected()).thenReturn(true);
-        var candidate = mockProvider.fallback(mockProviders());
+        var candidate = mockProvider.skipAndFallback(mockProviders());
         assertThat(candidate.getPriority()).isEqualTo(TOP);
         assertThat(candidate.getType()).isEqualTo(SPARK);
     }
@@ -30,12 +30,12 @@ class EmailProviderTest extends BaseTest {
     @Test
     void fallback_givenAllSkippedProviders_thenCommandNotFoundException() {
         when(emailService.isConnected()).thenReturn(false);
-        assertThrows(CommandNotFoundException.class, () -> mockProvider.fallback(mockProviders()));
+        assertThrows(CommandNotFoundException.class, () -> mockProvider.skipAndFallback(mockProviders()));
     }
 
     @Test
     void fallback_givenAllProvidersAreDown_thenCommandNotFoundException() {
         when(emailService.isConnected()).thenReturn(false);
-        assertThrows(CommandNotFoundException.class, () -> mockProvider.fallback(mockProviders()));
+        assertThrows(CommandNotFoundException.class, () -> mockProvider.skipAndFallback(mockProviders()));
     }
 }

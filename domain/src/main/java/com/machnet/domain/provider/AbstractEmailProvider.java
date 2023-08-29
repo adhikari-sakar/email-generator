@@ -6,6 +6,8 @@ import com.machnet.domain.contracts.EmailTemplate;
 import com.machnet.domain.email.EmailModel;
 import com.machnet.domain.email.Priority;
 
+import java.util.function.Function;
+
 public abstract class AbstractEmailProvider implements EmailProvider {
 
     private final EmailService emailService;
@@ -50,5 +52,10 @@ public abstract class AbstractEmailProvider implements EmailProvider {
     @Override
     public EmailService getService() {
         return this.emailService;
+    }
+
+    @Override
+    public EmailProvider andThen(Function<EmailProvider, EmailProvider> providerFunction) {
+        return providerFunction.apply(this);
     }
 }

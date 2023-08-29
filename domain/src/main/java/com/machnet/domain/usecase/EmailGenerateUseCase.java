@@ -13,7 +13,7 @@ public class EmailGenerateUseCase {
             return provider.execute();
         }
         //skip and fallback next available provider
-        return provider.skip().fallback(allProviders).execute();
+        return provider.skipAndFallback(allProviders).execute();
     }
 }
 

@@ -4,8 +4,10 @@ import com.machnet.domain.email.EmailModel;
 import com.machnet.domain.email.EmailProviderType;
 import com.machnet.domain.email.Priority;
 import com.machnet.domain.exception.CommandNotFoundException;
+import com.machnet.domain.provider.AbstractEmailProvider;
 
 import java.util.Collection;
+import java.util.function.Function;
 
 import static java.util.Comparator.comparing;
 import static java.util.function.Predicate.not;
@@ -31,12 +33,18 @@ public interface EmailProvider extends Command<EmailModel> {
         return ConnectionProvider.isConnected(getService());
     }
 
-    default EmailProvider fallback(Collection<EmailProvider> providers) {
+    default EmailProvider skipAndFallback(Collection<EmailProvider> providers) {
+        return this.skip().andThen(provider -> fallback(providers));
+    }
+
+    EmailProvider andThen(Function<EmailProvider, EmailProvider> providerFunction);
+
+    private EmailProvider fallback(Collection<EmailProvider> providers) {
         return providers.stream()
                 .filter(not(EmailProvider::isSkipped))
                 .filter(EmailProvider::isUp)
-                .max(comparing(provider -> provider.getPriority().getValue())) //find a provider with the highest priority
-                .map(newProvider -> newProvider.updatePriority(this.getPriority().resolve(newProvider)))
+                .max(comparing(provider -> provider.getPriority().getValue()))
+                .map(newProvider -> newProvider.updatePriority(this.getPriority().resolve(newProvider.getPriority())))
                 .orElseThrow(() -> new CommandNotFoundException("Email Provider not found!!"));
     }
 }
